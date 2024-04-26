@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>
+    {{
+    frmHorario.controls["id"]
+    ? "Actualizar Horario"
+    : "Registrar Horario"
+    }}
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <div class="containter" [formGroup]="frmHorario">
+        <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Hora Inicio</mat-label>
+                <input type="text" matInput placeholder="Hora Inicio" formControlName="hora_inicio" appUpper />
+                <mat-error>El campo Hora Inicio es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="containter" [formGroup]="frmHorario">
+        <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Hora Fin</mat-label>
+                <input type="text" matInput placeholder="Hora Fin" formControlName="hora_fin" appUpper />
+                <mat-error>El campo Hora Fin es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close (click)="onClose()">Cerrar</button>
+    <button type="submit" mat-button [disabled]="onDisabled()" (click)="onSubmit()">
+        Guardar
+    </button>
+</mat-dialog-actions>

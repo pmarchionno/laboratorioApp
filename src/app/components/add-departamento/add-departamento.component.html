@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>
+    {{
+    frmDepartamento.controls["id"]
+    ? "Actualizar Departamento"
+    : "Registrar Departamento"
+    }}
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <div class="containter" [formGroup]="frmDepartamento">
+        <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput placeholder="Nombre" formControlName="nombre" appUpper />
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close (click)="onClose()">Cerrar</button>
+    <button type="submit" mat-button [disabled]="onDisabled()" (click)="onSubmit()">
+        Guardar
+    </button>
+</mat-dialog-actions>

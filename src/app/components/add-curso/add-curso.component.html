@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>
+    {{
+    frmCurso.controls["id"]
+    ? "Actualizar Curso"
+    : "Registrar Curso"
+    }}
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <div class="containter" [formGroup]="frmCurso">
+        <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput placeholder="Nombre" formControlName="nombre" appUpper />
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <!-- <div class="row" *ngIf="editCurso">
+            <mat-form-field class="w-100">
+                <mat-label>Id</mat-label>
+                <input type="text" matInput placeholder="Id" formControlName="id">
+                <mat-error>El campo Id es requerido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="w-100">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput placeholder="Nombre" formControlName="nombre">
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+        </div> -->
+    </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close (click)="onClose()">Cerrar</button>
+    <button type="submit" mat-button [disabled]="onDisabled()" (click)="onSubmit()">
+        Guardar
+    </button>
+</mat-dialog-actions>
+
+<!-- 
+{{onDisabled()}}
+<ng-container *ngIf="data">
+    <p>{{data.id}}</p>
+    <p>{{data.nombre}}</p>
+</ng-container>
+-->

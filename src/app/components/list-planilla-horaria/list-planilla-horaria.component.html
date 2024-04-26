@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row mt-3">
+        <div class="mr-2">
+            <span>
+                <a class="text-primary-600" href="javascript:void(0)">{{ title }}</a>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <h2 class="text-sub-title">Buscar Registro</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="mr-2">
+            <button class="btn-raised" mat-raised-button (click)="onCreater()" matTooltip="Crear Registro">
+                <mat-icon svgIcon="plus"></mat-icon>
+            </button>
+        </div>
+        <div class="mr-2">
+            <button type="button" class="btn-raised" mat-raised-button (click)="onEraser()"
+                matTooltip="Limpiar Búsqueda">
+                <mat-icon svgIcon="eraser"></mat-icon>
+            </button>
+        </div>
+        <div class="w-60">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Busqueda Avanzada</mat-label>
+                <input type="text" matInput [(ngModel)]="search" placeholder="Busqueda Avanzada"
+                    (keydown.enter)="onSearch($event)" (input)="onSearch($event)" />
+                <mat-icon matSuffix svgIcon="search"></mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <br />
+    <div class="example-container mat-elevation-z8">
+        <div class="example-loading-shade">
+            <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+        </div>
+    </div>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="lstDataSource" matSort *ngIf="lstDataSource">
+            <!-- Name Column -->
+            <ng-container matColumnDef="hora_inicio">
+                <th mat-header-cell fxFlex="70%" fxFlexAlign="center" *matHeaderCellDef mat-sort-header>
+                    HORA INICIO
+                </th>
+                <td mat-cell fxFlex="70%" *matCellDef="let element">
+                    {{ element.hora_inicio}}
+                </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="hora_fin">
+                <th mat-header-cell fxFlex="70%" fxFlexAlign="center" *matHeaderCellDef mat-sort-header>
+                    HORA FIN
+                </th>
+                <td mat-cell fxFlex="70%" *matCellDef="let element">
+                    {{ element.hora_fin}}
+                </td>
+            </ng-container>
+            
+            <!-- Name Column -->
+            <ng-container matColumnDef="curso">
+                <th mat-header-cell fxFlex="70%" fxFlexAlign="center" *matHeaderCellDef mat-sort-header>
+                    CURSO
+                </th>
+                <td mat-cell fxFlex="70%" *matCellDef="let element">
+                    {{ element.curso.nombre }}
+                </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="materia">
+                <th mat-header-cell fxFlex="70%" fxFlexAlign="center" *matHeaderCellDef mat-sort-header>
+                    MATERIA
+                </th>
+                <td mat-cell fxFlex="70%" *matCellDef="let element">
+                    {{ element.materia.nombre }}
+                </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="personal">
+                <th mat-header-cell fxFlex="70%" fxFlexAlign="center" *matHeaderCellDef mat-sort-header>
+                    DOCENTE
+                </th>
+                <td mat-cell fxFlex="70%" *matCellDef="let element">
+                    {{ element.personal.nombre}} {{element.personal.apellido}}
+                </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="seleccionar">
+                <th mat-header-cell style="align-items: center" fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>
+                    SELECCIONAR
+                </th>
+                <td mat-cell fxFlex="10%" *matCellDef="let row">
+                    <button mat-icon-button matTooltip="Editar" (click)="onCreater(row)">
+                        <mat-icon svgIcon="edit"></mat-icon>
+                    </button>
+                    <button mat-icon-button matTooltip="Eliminar" (click)="confirmationDelete(row)">
+                        <mat-icon svgIcon="delete"></mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="lstColumsTable"></tr>
+            <tr mat-row *matRowDef="let row; columns: lstColumsTable"></tr>
+        </table>
+        <mat-divider></mat-divider>
+        <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[10, 50, 100]"
+            (page)="handlePage()" showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

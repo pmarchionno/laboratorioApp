@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>
+    {{
+    frmMateria.controls["id"]
+    ? "Actualizar Materia"
+    : "Registrar Materia"
+    }}
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <div class="containter" [formGroup]="frmMateria">
+        <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput placeholder="Nombre" formControlName="nombre" appUpper />
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+
+            <!-- <mat-grid-tile> -->
+            <!-- <mat-form-field class="w-100 pr-1" appearance="outline">
+                <mat-label>Departamento</mat-label>
+                <input type="text" [disabled]="true" matInput placeholder="SELECCIONE DEPARTAMENTO"
+                    formControlName="nombreDepartamento" appUpper />
+                <button matSuffix mat-icon-button (click)="onSearchComponent()">
+                    <mat-icon svgIcon="search"></mat-icon>
+                </button>
+                <mat-error>El Departamento es requerido </mat-error>
+            </mat-form-field> -->
+            <!-- </mat-grid-tile> -->
+
+            <mat-form-field class="example-full-width">
+                <!-- <input matInput placeholder="SELECCIONE DEPARTAMENTO" aria-label="State" [matAutocomplete]="auto"
+                    [formControl]="stateCtrl" />
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let state of filteredOptions | async" [value]="state">
+                        <span>{{ state.nombre }}</span>
+                    </mat-option>
+                </mat-autocomplete> -->
+
+                <input matInput placeholder="Departamento" aria-label="State" [matAutocomplete]="auto"
+                    [formControl]="frmDepartamentos" formControlName="nombreDepartamento">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onDepartamentoSelected($event)">
+                    <mat-option *ngFor="let state of filteredOptions | async" [value]="state.nombre">
+                        <span>{{ state.nombre }}</span>
+                    </mat-option>
+                </mat-autocomplete>
+                <mat-error>El Departamento es requerido</mat-error>
+            </mat-form-field>
+        </div>
+        
+        <!-- <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Departamento</mat-label>
+                <input type="text" matInput placeholder="Nombre" formControlName="nombre" appUpper />
+                <mat-error>El campo Nombre es requerido</mat-error>
+            </mat-form-field>
+        </div> -->
+
+    </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close (click)="onClose()">Cerrar</button>
+    <button type="submit" mat-button [disabled]="onDisabled()" (click)="onSubmit()">
+        Guardar
+    </button>
+</mat-dialog-actions>

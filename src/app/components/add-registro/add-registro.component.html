@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>
+    {{
+    frmRegistro.controls["id"]
+    ? "Actualizar Registro"
+    : "Registrar Registro"
+    }}
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <div class="containter" [formGroup]="frmRegistro">
+        <div class="row">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input type="text" matInput placeholder="Fecha" formControlName="fecha" appUpper />
+                <mat-error>El campo Fecha es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Hora Inicio</mat-label>
+                <input type="text" matInput placeholder="Hora Inicio" formControlName="hora_inicio" appUpper />
+                <mat-error>El campo Hora Inicio es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Hora Fin</mat-label>
+                <input type="text" matInput placeholder="Hora Fin" formControlName="hora_fin" appUpper />
+                <mat-error>El campo Hora Fin es requerido</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Detalle</mat-label>
+                <input type="text" matInput placeholder="Detalle" formControlName="detalle" appUpper />
+                <mat-error>El campo Detalle es requerido</mat-error>
+            </mat-form-field>
+
+            <div class="row">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Curso" aria-label="State" [matAutocomplete]="autoCurso"
+                        [formControl]="frmCursos" formControlName="nombreCurso">
+                    <mat-autocomplete #autoCurso="matAutocomplete" (optionSelected)="onCursoSelected($event)">
+                        <mat-option *ngFor="let state of filteredCursosOptions | async" [value]="state.nombre">
+                            <span>{{ state.nombre }}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>El Curso es requerido</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Materia" aria-label="State" [matAutocomplete]="autoMateria"
+                        [formControl]="frmMaterias" formControlName="nombreMateria">
+                    <mat-autocomplete #autoMateria="matAutocomplete" (optionSelected)="onMateriaSelected($event)">
+                        <mat-option *ngFor="let state of filteredMateriasOptions | async" [value]="state.nombre">
+                            <span>{{ state.nombre }}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>El campo Materia es requerido</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Personal" aria-label="State" [matAutocomplete]="autoPersonal"
+                        [formControl]="frmPersonals" formControlName="nombrePersonal">
+                    <mat-autocomplete #autoPersonal="matAutocomplete" (optionSelected)="onPersonalSelected($event)">
+                        <mat-option *ngFor="let state of filteredPersonalsOptions | async" [value]="state.nombre">
+                            <span>{{ state.nombre }}</span>
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>El campo Personal es requerido</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close (click)="onClose()">Cerrar</button>
+    <button type="submit" mat-button [disabled]="onDisabled()" (click)="onSubmit()">
+        Guardar
+    </button>
+</mat-dialog-actions>

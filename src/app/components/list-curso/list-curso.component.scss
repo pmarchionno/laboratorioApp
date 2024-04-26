@@ -1,0 +1,76 @@
+.btn-raised {
+  height: 52px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Structure */
+.example-container {
+  position: relative;
+}
+
+.example-table-container {
+  position: relative;
+  min-height: 200px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-rate-limit-reached {
+  max-width: 360px;
+  text-align: center;
+}
+
+/* Column Widths */
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+.btn-primary {
+  background: #1572e8;
+  border-color: #1367d1;
+}
+
+.btn-danger {
+  background: #f5365c;
+  border-color: #f41e48;
+}
+
+.btn-xs {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background-color: #ffffff !important; /* Set the background color for odd rows */
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background-color: #f4f4f4 !important; /* Set the background color for even rows */
+}
