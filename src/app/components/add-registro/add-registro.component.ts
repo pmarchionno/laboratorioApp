@@ -68,7 +68,7 @@ export class AddRegistroComponent {
     } else {
       this.editRegistro = false;
       this.frmRegistro = this.formBuilder.group({
-        fecha: ['', Validators.required],
+        fecha: [new Date(), Validators.required],
         hora_inicio: ['', Validators.required],
         hora_fin: ['', Validators.required],
         detalle: ['', Validators.required],

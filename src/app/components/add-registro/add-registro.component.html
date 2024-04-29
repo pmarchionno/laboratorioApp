@@ -9,11 +9,18 @@
 <mat-dialog-content class="mat-typography">
     <div class="containter" [formGroup]="frmRegistro">
         <div class="row">
-            <mat-form-field class="w-100" appearance="outline">
+            <!-- <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Fecha</mat-label>
-                <input type="text" matInput placeholder="Fecha" formControlName="fecha" appUpper />
+                <input type="text" matInput placeholder="Fecha" formControlName="fecha" appUpper/>
                 <mat-error>El campo Fecha es requerido</mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Fecha" formControlName="fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>El campo Fecha es requerido</mat-error>
+              </mat-form-field>
 
             <mat-form-field class="w-100" appearance="outline">
                 <mat-label>Hora Inicio</mat-label>

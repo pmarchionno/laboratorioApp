@@ -7,9 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -110,11 +111,13 @@ import { SearchCursoComponent } from './components/search-curso/search-curso.com
     MatGridListModule,
     MatIconModule,
     MatDialogModule,
+    MatDatepickerModule,
     MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    MatNativeDateModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
